@@ -50,14 +50,24 @@ export default {
 	margin-top: 1vw;
 
 	.inputText {
+		position:absolute;
+		top: 0;
+		left: 0;
 		width: 12vw;
 		padding-top: 1vw;
 		padding-left: 1vw;
 		text-align: left;
+		background: white;
+		z-index:1900;
+
 	}
 	
 	.text {
-		width: 12vw;
+
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 80%;
 
 		padding-top: 1vw;
 		padding-left: 1vw;
@@ -66,9 +76,18 @@ export default {
 		overflow: hidden;
 		font-size: 14px;
 		&:hover {
+			background: white;
 			height: auto;
 			cursor: pointer;
+			padding-bottom: 1vw;
+			z-index: 900;
+
 		}
+	}
+
+	.todoText {
+		position: relative;
+		height: 40px;
 	}
 
 
@@ -92,6 +111,7 @@ export default {
 }
 
 .checkbox {
+	cursor: pointer;
 	display: inline-block;
 	width: 4vw;
 	height: 2vw;
