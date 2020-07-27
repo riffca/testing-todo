@@ -7,10 +7,11 @@
 				
 				<div class="form">
 					<label for="todoName">search</label>
-					<input id="todoName" type="text">
+					<input id="todoName" type="text" v-model="search">
 				</div>			
 
 				<div class="form">
+					<label for="todoName">filter</label>
 					<select v-model="status">
 						<option>all</option>
 						<option>done</option>
@@ -96,7 +97,7 @@ export default {
 			this.todos.forEach(item=>{
 				this.lists.forEach((list)=>{
 					if(item.listId=== list.id) {
-						let exp = new RegExp(this.filter, 'i')
+						let exp = new RegExp(this.search, 'i')
 						if(item.text.match(exp)) {
 							if(this.status === 'done' && item.done) {
 								list.items.push(item)
@@ -149,7 +150,7 @@ export default {
 	},
 	data () {
 		return {
-			lists: [{id: uuidv4(),name:'main', editTitle: false, items:[]}],
+			lists: [{id: uuidv4(),name:'Main', editTitle: false, items:[]}],
 			status: 'all',
 			search: '',
 			currentListId: ''

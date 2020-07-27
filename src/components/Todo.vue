@@ -1,15 +1,19 @@
 <template>
 	<div class="todo">
-		<div v-if="!editText" class="text">{{todo.text}}</div>
-		<div v-else class="inputText"><textarea  v-model="todo.text" cols="60" rows="10"></textarea></div>
 		<div class="actions">
-			<div><div class="button remove" @click="editText=!editText">{{ editText ? 'Ok' : 'Edit' }}</div></div>
-			<div @click="setDone(todo)" class="checkbox" :class="{done: todo.done}">
-					{{ !todo.done ? 'pending' : 'done' }}
-			</div>
 			<div><div class="button remove" @click="removeTodo(todo)">
 				X
 			</div></div>
+			<div @click="setDone(todo)" class="checkbox" :class="{done: todo.done}">
+					{{ !todo.done ? 'pending' : 'done' }}
+			</div>
+			<div><div class="button remove" @click="editText=!editText">{{ editText ? 'Ok' : 'Edit' }}</div></div>
+
+		</div>
+
+		<div class="todoText">
+			<div v-if="!editText" class="text">{{todo.text}}</div>
+			<div v-else class="inputText"><textarea  v-model="todo.text" cols="60" rows="10"></textarea></div>
 		</div>
 		
 	</div>
@@ -41,7 +45,8 @@ export default {
 
 
 .todo {
-	display: flex;
+
+	position: relative;
 	margin-top: 1vw;
 
 	.inputText {
@@ -57,7 +62,7 @@ export default {
 		padding-top: 1vw;
 		padding-left: 1vw;
 		text-align: left;
-		height: 60px;
+		height: 30px;
 		overflow: hidden;
 		font-size: 14px;
 		&:hover {
@@ -73,12 +78,16 @@ export default {
 
 
 .actions {
-	transform: translateY(-1.2vw);
 	display: flex;
+	flex-direction: row-reverse;
 	.remove {
 		margin-top: 0;
 		margin-bottom: 2vw;
 		margin-left: 2vw;
+	}
+
+	.button {
+		margin-bottom: 0;
 	}
 }
 
